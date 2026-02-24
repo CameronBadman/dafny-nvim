@@ -2,6 +2,12 @@
 
 A Neovim plugin for [Dafny](https://dafny.org/) verification, built on the native LSP client. All output renders inline using extmarks and virtual text — no floating windows.
 
+
+https://github.com/user-attachments/assets/58cfe2c7-a2ce-4f63-b1e1-ce43b402c14c
+
+
+
+
 ## Features
 
 **Per-method verification status** — EOL icons update live as dafny verifies:
