@@ -3,8 +3,8 @@
 A Neovim plugin for [Dafny](https://dafny.org/) verification, built on the native LSP client. All output renders inline using extmarks and virtual text — no floating windows.
 
 
-https://github.com/user-attachments/assets/58cfe2c7-a2ce-4f63-b1e1-ce43b402c14c
 
+https://github.com/user-attachments/assets/f76fcd82-89c4-4c7f-b021-10f92913ef1f
 
 
 
