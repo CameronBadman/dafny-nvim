@@ -361,7 +361,7 @@ M.setup = function(opts)
     end)
   end, {})
 
-  -- ── Section 8: LspAttach ─────────────────────────────────────────────────────
+  -- ── Section 8: LspAttach & Autocmds ─────────────────────────────────────────
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
       local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -376,6 +376,30 @@ M.setup = function(opts)
           fetch_symbols(bufnr, function() end)
         end
       end, 500)
+    end,
+  })
+
+  -- Trigger on save
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "*.dfy",
+    callback = function(args)
+      local bufnr = args.buf
+      local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "dafny" })
+      if #clients > 0 and api.nvim_buf_is_valid(bufnr) then
+        fetch_symbols(bufnr, function() end)
+      end
+    end,
+  })
+
+  -- Trigger when entering buffer
+  vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*.dfy",
+    callback = function(args)
+      local bufnr = args.buf
+      local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "dafny" })
+      if #clients > 0 and api.nvim_buf_is_valid(bufnr) then
+        fetch_symbols(bufnr, function() end)
+      end
     end,
   })
 end
